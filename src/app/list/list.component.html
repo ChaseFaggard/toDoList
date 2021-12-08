@@ -1,0 +1,14 @@
+<body>
+    <h1>My To-Do List</h1>
+    <div class="add-item">
+        <input class="todo" #todo (keyup.enter)="addItem(todo.value); todo.value=''" placeholder="Add an item. . ." />
+        <button class="btn btn-primary m-3" (click)="addItem(todo.value); todo.value=''"><i class="fa fa-plus"></i></button>
+    </div>
+    <div id="checklist">
+        <ng-container *ngFor="let item of list">
+            <input id="{{item.id}}" type="checkbox" name="r" value="1" [checked]="item.completed" (click)="toggleComplete(item.id)">
+            <label for="{{item.id}}" (dblclick)="deleteItem(item.id)">{{item.todo}}</label>   
+        </ng-container> 
+        <p *ngIf="list.length == 0">Your list is empty.</p>
+    </div>
+</body>
